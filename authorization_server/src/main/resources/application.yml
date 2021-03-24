@@ -11,14 +11,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari:
-      connection-timeout: 60000
-      maximum-pool-size: 2
-      minimum-idle: 1
-      pool-name: data-source
-    url: jdbc:mysql://localhost:3306/keyist?useSSL=false&useUnicode=yes&characterEncoding=UTF-8
-    password: password
-    username: username
+    url: jdbc:mysql://localhost:3306/ecommerce?createDatabaseIfNotExist=true
+    password: 123456
+    username: root
   jpa:
     properties:
       hibernate:
@@ -26,3 +21,5 @@ spring:
         format_sql: true
   mvc:
     throw-exception-if-no-handler-found: true
+security:
+  signing-key: MjWP5L7CiD

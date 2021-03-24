@@ -55,6 +55,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
     });
 
     this.browseState.pipe(take(1)).subscribe(data => {
+      
       this.selectedPage = data.selectedPage;
       this.selectedSort = data.selectedSort;
       this.selectedCategory = data.selectedCategory;

@@ -2,6 +2,7 @@ package com.commerce.oauth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,6 +16,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import javax.sql.DataSource;
 
@@ -32,6 +34,10 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
     @Autowired
     @Qualifier("userService")
     private UserDetailsService userDetailsService;
+
+
+    @Value("${security.signing-key}")
+    private String signingKey;
 
     @Autowired
     private PasswordEncoder oauthClientPasswordEncoder;
@@ -60,7 +66,12 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        converter.setSigningKey(signingKey);
+
         endpoints.tokenStore(tokenStore())
+                .reuseRefreshTokens(false)
+                .accessTokenConverter(converter)
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService);
     }

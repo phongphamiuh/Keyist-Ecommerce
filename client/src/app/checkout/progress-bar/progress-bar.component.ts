@@ -32,5 +32,4 @@ export class ProgressBarComponent implements OnInit {
       }
     });
   }
-
 }

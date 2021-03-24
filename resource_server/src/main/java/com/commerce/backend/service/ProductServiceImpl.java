@@ -11,6 +11,7 @@ import com.commerce.backend.model.entity.Product;
 import com.commerce.backend.model.entity.ProductVariant;
 import com.commerce.backend.model.response.product.ProductDetailsResponse;
 import com.commerce.backend.model.response.product.ProductResponse;
+import com.commerce.backend.model.response.product.TelevisionResponse;
 import com.commerce.backend.model.response.product.ProductVariantResponse;
 import com.commerce.backend.model.specs.ProductVariantSpecs;
 import com.commerce.backend.service.cache.ProductCacheService;
@@ -104,7 +105,6 @@ public class ProductServiceImpl implements ProductService {
                         .and(ProductVariantSpecs.withCategory(category))
                         .and(ProductVariantSpecs.minPrice(minPrice))
                         .and(ProductVariantSpecs.maxPrice(maxPrice));
-
         return productVariantRepository.count(combinations);
     }
 
@@ -139,7 +139,6 @@ public class ProductServiceImpl implements ProductService {
         if (productVariants.isEmpty()) {
             throw new ResourceNotFoundException("Most selling products not found");
         }
-
         return productVariants
                 .stream()
                 .map(productVariantResponseConverter)
@@ -171,6 +170,11 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<TelevisionResponse> findByCategory(Long categoryId) {
+
+        return null;
+    }
 
     private Sort getSort(String sort) {
         switch (sort) {

@@ -7,6 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Repository
@@ -22,4 +23,6 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, L
     List<Product> findTop8ByProductCategoryAndIdIsNot(ProductCategory productCategory, Long id);
 
     List<Product> findAllByProductCategoryIsNot(ProductCategory productCategory, Pageable pageable);
+
+    List<Product> findByProductCategory(ProductCategory productCategory);
 }

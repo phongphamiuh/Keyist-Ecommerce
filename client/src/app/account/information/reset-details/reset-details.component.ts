@@ -34,6 +34,7 @@ export class ResetDetailsComponent implements OnInit {
       this.router.navigate(['/']);
       return throwError(error);
     }
+    
     )).subscribe(data => {
       this.detailsForm.patchValue({
         firstName: data.firstName,
@@ -47,7 +48,6 @@ export class ResetDetailsComponent implements OnInit {
 
   onSubmitDetailsForm() {
     this.innerLoading = true;
-
 
     const user = {
       firstName: this.detailsForm.value?.firstName?.trim()?.length ? this.detailsForm.value.firstName.trim() : null,

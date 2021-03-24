@@ -35,7 +35,6 @@ export class PostOrder implements Action {
   }
 }
 
-
 export class PostPersonal implements Action {
   readonly type = POST_PERSONAL;
 

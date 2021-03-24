@@ -87,7 +87,7 @@ export function browseReducer(state = initialState, action: BrowseActions.Browse
         categories: action.payload.res,
         errors: [...state.errors.filter(error => error.errorEffect !== action.payload.effect)]
       };
-
+    
     case (BrowseActions.FETCH_COLORS_SUCCESS):
       return {
         ...state,

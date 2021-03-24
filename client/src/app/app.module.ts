@@ -30,12 +30,14 @@ import { AccountService } from './services/account.service';
 import { BrowseEffects } from './store/browse/browse.effects';
 import { VerificationModule } from './verification/verification.module';
 import { NonAuthGuardService } from './services/non-auth-guard.service';
+import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    GPageNotFoundComponent
+    GPageNotFoundComponent,
+    HotelDetailComponent
   ],
   imports: [
     BrowserModule,

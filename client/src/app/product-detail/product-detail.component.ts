@@ -9,7 +9,7 @@ import * as CartActions from '../store/cart/cart.actions';
 import { Observable, Subscription, throwError } from 'rxjs';
 import { LocationStrategy } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { catchError, take } from 'rxjs/operators';
+import { catchError, take } from 'rxjs/operators'
 
 
 @Component({

@@ -26,7 +26,8 @@ export class AuthEffects {
           .pipe(switchMap(res => {
             return [
               {
-                type: AuthActions.SIGN_UP_SUCCESS, payload: { effect: AuthActions.SIGN_UP }
+                type: AuthActions.SIGN_UP_SUCCESS, 
+                payload: { effect: AuthActions.SIGN_UP }
               }
               ,
               {
